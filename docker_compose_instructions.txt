@@ -1,0 +1,12 @@
+Insure that we create a structure like below to start with. The initdb will contain any initialization scripts.
+
+./
+│
+├── docker-compose.yml
+├── mysql.dockerfile
+├── app/
+│   └── app.dockerfile
+└── initdb/
+    ├── init-script.sql
+    └── another-script.sql
+
