@@ -14,7 +14,7 @@ func main() {
 	dbUser := "testuser"
 	dbPassword := "testpassword"
 	dbName := "testdb"
-	dbHost := "mysql-container" // Docker service name from docker-compose
+	dbHost := "db" // Docker service name from docker-compose
 
 	// MySQL DSN (Data Source Name)
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s", dbUser, dbPassword, dbHost, dbName)
