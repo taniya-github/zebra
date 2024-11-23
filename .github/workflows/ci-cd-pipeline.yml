@@ -57,6 +57,7 @@ jobs:
 
             # Clone the repository and deploy the application
             git clone git@github.com:taniya-github/zebra.git .
+            docker-compose -f docker-compose.yml down
             docker-compose -f docker-compose.yml up -d --build
           EOF
         env:
