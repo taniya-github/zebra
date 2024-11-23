@@ -10,8 +10,8 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest  # Use the self-hosted CentOS runner (or remove if using GitHub-hosted runners)
-
+    # runs-on: ubuntu-latest  # Use the self-hosted CentOS runner (or remove if using GitHub-hosted runners)
+    runs-on: self-hosted
     steps:
       # 0. Print user
       - name: Show current user
@@ -44,7 +44,13 @@ jobs:
        # 5. Deploy to CentOS VM (Target)
       - name: Deploy to CentOS VM
         run: |
-          sudo ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa admin@localhost << EOF
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa  # Correct permissions
+          chmod 700 ~/.ssh         # Ensure directory permissions are correct
+          ssh-keyscan -H localhost >> ~/.ssh/known_hosts  # Add localhost to known hosts
+
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa admin@localhost << EOF
             # Setup deployment directory
             mkdir -p /home/admin/cicd_target
             cd /home/admin/cicd_target
