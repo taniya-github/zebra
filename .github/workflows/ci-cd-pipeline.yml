@@ -36,9 +36,9 @@ jobs:
           docker-compose --version  # Verify installation
 
       # 4. Build and run Docker containers using Docker Compose
-      - name: Build and run Docker containers1
-        run: |
-          docker-compose -f docker-compose.yml up -d --build
+      #- name: Build and run Docker containers1
+        #run: |
+          #docker-compose -f docker-compose.yml up -d --build
       
      
        # 5. Deploy to CentOS VM (Target)
