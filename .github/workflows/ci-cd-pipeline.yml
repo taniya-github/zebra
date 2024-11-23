@@ -62,7 +62,7 @@ jobs:
             docker ps -a -q --filter "name=mysql-container" | xargs -r docker rm -f
             docker ps -a -q --filter "name=go-webapp" | xargs -r docker rm -f
             docker-compose -f docker-compose.yml up db -d --build || true
-            docker-compose -f docker-compose.yml up wedapp -d --build
+            docker-compose -f docker-compose.yml up webapp -d --build
           EOF
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
