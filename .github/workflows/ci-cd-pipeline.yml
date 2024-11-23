@@ -13,6 +13,10 @@ jobs:
     runs-on: ubuntu-latest  # Use the self-hosted CentOS runner (or remove if using GitHub-hosted runners)
 
     steps:
+      # 0. Print user
+      - name: Show current user
+        run: whoami
+     
       # 1. Checkout the latest code
       - name: Checkout code
         uses: actions/checkout@v3
@@ -40,10 +44,10 @@ jobs:
        # 5. Deploy to CentOS VM (Target)
       - name: Deploy to CentOS VM
         run: |
-          mkdir -p ~/.ssh  # Ensure the correct directory is created for the GitHub runner user
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa  # Save the private key to the correct location
-          chmod 600 ~/.ssh/id_rsa  # Ensure the key file has the correct permissions
-          ssh-keyscan -H localhost >> ~/.ssh/known_hosts  # Add the target host to known_hosts
+          sudo mkdir -p ~/.ssh  # Ensure the correct directory is created for the GitHub runner user
+          sudo echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa  # Save the private key to the correct location
+          sudo chmod 600 ~/.ssh/id_rsa  # Ensure the key file has the correct permissions
+          sudo ssh-keyscan -H localhost >> ~/.ssh/known_hosts  # Add the target host to known_hosts
 
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa admin@localhost << EOF
             # Setup deployment directory
