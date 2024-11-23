@@ -40,7 +40,7 @@ jobs:
        # 5. Deploy to CentOS VM (Target)
       - name: Deploy to CentOS VM
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_PRIVATE_KEY }} admin@localhost << EOF
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa admin@localhost << EOF
             # Setup deployment directory
             mkdir -p /home/admin/cicd_target
             cd /home/admin/cicd_target
