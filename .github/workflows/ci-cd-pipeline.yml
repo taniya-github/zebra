@@ -44,12 +44,7 @@ jobs:
        # 5. Deploy to CentOS VM (Target)
       - name: Deploy to CentOS VM
         run: |
-          sudo mkdir -p ~/.ssh  # Ensure the correct directory is created for the GitHub runner user
-          sudo echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa  # Save the private key to the correct location
-          sudo chmod 600 ~/.ssh/id_rsa  # Ensure the key file has the correct permissions
-          sudo ssh-keyscan -H localhost >> ~/.ssh/known_hosts  # Add the target host to known_hosts
-
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa admin@localhost << EOF
+          sudo ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa admin@localhost << EOF
             # Setup deployment directory
             mkdir -p /home/admin/cicd_target
             cd /home/admin/cicd_target
