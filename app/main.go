@@ -17,7 +17,7 @@ func main() {
 	dbHost := "db" // Docker service name from docker-compose
 
 	// MySQL DSN (Data Source Name)
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s", dbUser, dbPassword, dbHost, dbName)
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:3307)/%s", dbUser, dbPassword, dbHost, dbName)
 
 	// Connect to MySQL
 	db, err := sql.Open("mysql", dsn)
@@ -38,7 +38,7 @@ func main() {
 		w.Write([]byte("Connection successful!"))
 	})
 
-	log.Println("Server started on :8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Println("Server started on :8081")
+	log.Fatal(http.ListenAndServe(":8081", nil))
 }
 

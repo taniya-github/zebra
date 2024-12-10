@@ -59,8 +59,8 @@ jobs:
             git clone git@github.com:taniya-github/zebra.git .
             
             docker-compose -f docker-compose.yml down || true
-            docker ps -a -q --filter "name=mysql-container" | xargs -r docker rm -f
-            docker ps -a -q --filter "name=go-webapp" | xargs -r docker rm -f
+            docker ps -a -q --filter "name=mysql-container2" | xargs -r docker rm -f
+            docker ps -a -q --filter "name=go-webapp2" | xargs -r docker rm -f
             docker-compose -f docker-compose.yml up db -d --build || true
             docker-compose -f docker-compose.yml up webapp -d --build
           EOF
