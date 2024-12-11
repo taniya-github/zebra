@@ -16,7 +16,7 @@ jobs:
       # 0. Print user
       - name: Show current user
         run: whoami
-     
+
       # 1. Checkout the latest code
       - name: Checkout code
         uses: actions/checkout@v3
