@@ -43,7 +43,7 @@ webapp:
       DB_PASSWORD: testpassword
       DB_NAME: testdb
 
-  webapp2:
+webapp2:
     build:
       context: .
       dockerfile: app/app.dockerfile
