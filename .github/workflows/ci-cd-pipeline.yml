@@ -52,6 +52,7 @@ jobs:
 
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa admin@localhost << EOF
             # Setup deployment directory
+            rm -rf /home/admin/cicd_target
             mkdir -p /home/admin/cicd_target
             cd /home/admin/cicd_target
 
