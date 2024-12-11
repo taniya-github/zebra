@@ -42,7 +42,7 @@ jobs:
       
      
        # 5. Deploy to CentOS VM (Target)
-      - name: Deploy to CentOS VM
+       - name: Deploy to CentOS VM
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
@@ -69,3 +69,4 @@ jobs:
           EOF
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
