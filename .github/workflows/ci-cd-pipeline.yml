@@ -55,7 +55,7 @@ jobs:
             mkdir -p /home/admin/cicd_target
             cd /home/admin/cicd_target
 
-            # Clone the repository and deploy the application
+            # Clone the repository and deploy the  application
             git clone git@github.com:taniya-github/zebra.git .
             docker-compose -f docker-compose.yml down || true
             docker ps -a -q --filter "name=mysql-container" | xargs -r docker rm -f
